@@ -45,14 +45,14 @@ const Navbar = () => {
         <nav className="h-full px-4 max-w-container mx-auto relative">
           <Flex className="flex items-center justify-between h-full">
             <Link href="/">
-              <div>
+              <div className="w-8 md:w-20">
                 <Image src="/logo.png" alt="logo" width={50} height={30} />
               </div>
             </Link>
 
-            <div className="flex gap-1 border border-grey-3 px-4 py-1 items-center rounded-lg shadow-lg">
+            <div className="flex gap-1 border border-grey-3 px-0.5 md:px-4 py-1 items-center rounded-lg shadow-sm">
               <input
-                className="flex-1 h-full outline-none placeholder:text-[#C4C4C4] placeholder:text-[14px] py-2"
+                className="flex-1 h-5/6 md:h-full outline-none placeholder:text-[#C4C4C4] placeholder:text-[14px] py-2"
                 type="text"
                 onChange={(e) => setQuery(e.target.value)}
                 value={query}
