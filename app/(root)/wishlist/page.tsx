@@ -4,7 +4,7 @@ import Loader from "@/components/Loader"
 import ProductCard from "@/components/ProductCard"
 import { getProductDetails } from "@/lib/actions/actions"
 import { useUser } from "@clerk/nextjs"
-import { use, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 
 
 const Wishlist = () => {

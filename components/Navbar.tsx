@@ -32,8 +32,6 @@ const Navbar = () => {
     };
     ResponsiveMenu();
     window.addEventListener("resize", ResponsiveMenu);
-
-    // Cleanup function to remove the event listener
     return () => {
       window.removeEventListener("resize", ResponsiveMenu);
     };
