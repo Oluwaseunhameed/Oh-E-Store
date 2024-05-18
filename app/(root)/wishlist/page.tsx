@@ -10,7 +10,7 @@ import { use, useEffect, useState } from "react"
 const Wishlist = () => {
   const { user } = useUser()
 
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false);
   const [signedInUser, setSignedInUser] = useState<UserType | null>(null)
   const [wishlist, setWishlist] = useState<ProductType[]>([])
 
