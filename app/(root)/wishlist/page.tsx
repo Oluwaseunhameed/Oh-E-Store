@@ -10,40 +10,41 @@ import { useEffect, useState } from "react"
 const Wishlist = () => {
   const { user } = useUser()
 
-  const [loading, setLoading] = useState(false);
-  const [signedInUser, setSignedInUser] = useState<UserType | null>(null)
-  const [wishlist, setWishlist] = useState<ProductType[]>([])
+  const [loading, setLoading] = useState(true);
+  const [signedInUser, setSignedInUser] = useState<UserType | null>(null);
+  const [wishlist, setWishlist] = useState<ProductType[]>([]);
 
   const getUser = async () => {
     try {
-      const res = await fetch("/api/users")
-      const data = await res.json()
-      setSignedInUser(data)
-      setLoading(false)
+      const res = await fetch("/api/users");
+      const data = await res.json();
+      setSignedInUser(data);
+      setLoading(false);
     } catch (err) {
-      console.log("[users_GET", err)
+      console.log("[users_GET", err);
     }
-  }
+  };
 
   useEffect(() => {
     if (user) {
-      getUser()
+      getUser();
     }
-  }, [user])
+  }, [user]);
 
   const getWishlistProducts = async () => {
-    setLoading(true)
+    setLoading(true);
 
-    if (!signedInUser) return
+    if (!signedInUser) return;
+    const wishlistProducts = await Promise.all(
+      signedInUser?.wishlist?.map(async (productId) => {
+        const res = await getProductDetails(productId);
+        return res;
+      })
+    );
 
-    const wishlistProducts = await Promise.all(signedInUser?.wishlist?.map(async (productId) => {
-      const res = await getProductDetails(productId)
-      return res
-    }))
-
-    setWishlist(wishlistProducts)
-    setLoading(false)
-  }
+    setWishlist(wishlistProducts);
+    setLoading(false);
+  };
 
   useEffect(() => {
     if (signedInUser) {
