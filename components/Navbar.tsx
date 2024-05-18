@@ -42,7 +42,7 @@ const Navbar = () => {
   return (
     <>
       <div className="w-full h-20 bg-white sticky top-0 z-10 border-b-[1px] border-b-gray-200">
-        <nav className="h-full px-4 max-w-container mx-auto relative">
+        <nav className="h-full px-3 max-w-container mx-auto relative">
           <Flex className="flex items-center justify-between h-full">
             <Link href="/">
               <div className="w-8 md:w-20">
@@ -50,9 +50,9 @@ const Navbar = () => {
               </div>
             </Link>
 
-            <div className="flex gap-1 border border-grey-3 px-0.5 md:px-4 py-1 items-center rounded-lg shadow-sm">
+            <div className="flex gap-1 md:border border-grey-3 md:px-4 py-1 items-center justify-between rounded-lg relative">
               <input
-                className="flex-1 h-5/6 md:h-full outline-none placeholder:text-[#C4C4C4] placeholder:text-[14px] py-2"
+                className="flex-1 h-4/5 md:h-full outline-none placeholder:text-[#C4C4C4] placeholder:text-[14px] py-2"
                 type="text"
                 onChange={(e) => setQuery(e.target.value)}
                 value={query}
@@ -62,7 +62,7 @@ const Navbar = () => {
                 disabled={query === ""}
                 onClick={() => router.push(`/search/${query}`)}
               >
-                <Search className="cursor-pointer h-4 w-4 hover:text-[#4e84cc]" />
+                <Search className="cursor-pointer h-4 w-4 hover:text-[#4e84cc] mr-8" />
               </button>
             </div>
 
@@ -78,7 +78,7 @@ const Navbar = () => {
                     {navBarList.map(({ _id, title, link }, index) => (
                       <Link
                         key={_id}
-                        className={`flex font-normal w-20 h-6 justify-center items-center px-10 lg:px-12 text-base ${
+                        className={`flex font-normal w-10 h-6 justify-center items-center px-8 lg:px-12 text-base ${
                           pathname === link
                             ? "font-extrabold text-lg underline underline-offset-4 decoration-1 text-[#262626]"
                             : "text-[#767676]"
